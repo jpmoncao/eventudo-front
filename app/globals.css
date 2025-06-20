@@ -91,10 +91,17 @@
 
 @layer base {
   * {
+    @apply transition-all;
+    @apply font-sans;
     @apply border-border outline-ring/50;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+
+  h1 {
+    @apply text-2xl font-heading font-semibold;
   }
 }
