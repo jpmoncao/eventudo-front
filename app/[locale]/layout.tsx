@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Lexend, Nunito_Sans } from "next/font/google";
-import "./globals.css";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { notFound } from 'next/navigation';
+import { routing } from '@/i18n/routing';
+
+import "../globals.css";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -17,17 +21,24 @@ export const metadata: Metadata = {
   description: "Garanta seus ingressos para os eventos mais esperados do ano com os melhores preços!",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
-    <html lang="pt-br">
+    <html lang={locale}>
       <body
         className={`${lexend.variable} ${nunitosans.variable} antialiased`}
       >
-        {children}
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   );
