@@ -1,0 +1,16 @@
+{
+    "globals": {
+        "appName": "Eventudo",
+        "header": {
+            "home": "Início",
+            "events": "Eventos",
+            "about": "Sobre"
+        }
+    },
+    "pages": {
+        "home": {
+            "title": "Bem-vindo ao",
+            "description": "Garanta seus ingressos para os eventos mais esperados do ano com os melhores preços!"
+        }
+    }
+}

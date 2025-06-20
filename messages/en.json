@@ -1,0 +1,16 @@
+{
+    "globals": {
+        "appName": "Eventudo",
+        "header": {
+            "home": "Home",
+            "events": "Events",
+            "about": "About"
+        }
+    },
+    "pages": {
+        "home": {
+            "title": "Welcome to",
+            "description": "Get your tickets for the most anticipated events of the year at the best prices!"
+        }
+    }
+}

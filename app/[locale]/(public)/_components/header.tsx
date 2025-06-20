@@ -1,16 +1,20 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+
 import HamburgerMenu, { MenuItem } from "@/components/ui/hamburger-menu";
 
-const menuItems: MenuItem[] = [
-    { title: "Home", href: "/" },
-    { title: "Eventos", href: "/events" },
-    { title: "Sobre", href: "/about" },
-]
-
 export default function Header() {
+    const t = useTranslations("globals");
+
+    const menuItems: MenuItem[] = [
+        { title: t('header.home'), href: "/" },
+        { title: t('header.events'), href: "/events" },
+        { title: t('header.about'), href: "/about" },
+    ]
+
     return (
         <header className="flex items-center justify-between p-4 bg-background text-foreground">
-            <h1 className="text-primary">Eventudo</h1>
+            <h1 className="text-primary">{t('appName')}</h1>
 
             <HamburgerMenu menuItems={menuItems} />
             <nav className="hidden lg:flex">
