@@ -3,6 +3,7 @@ import { Lexend, Nunito_Sans } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { ThemeProvider } from "next-themes"
 
 import "../globals.css";
 
@@ -34,11 +35,20 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${lexend.variable} ${nunitosans.variable} antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <ThemeProvider 
+            attribute="class" 
+            defaultTheme="system" 
+            enableSystem
+            themes={["light", "dark"]} 
+          >
+            <NextIntlClientProvider>
+              {children}
+            </NextIntlClientProvider>
+          </ThemeProvider>
       </body>
     </html>
   );

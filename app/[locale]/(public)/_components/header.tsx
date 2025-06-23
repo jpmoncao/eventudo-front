@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 
 import HamburgerMenu, { MenuItem } from "@/components/ui/hamburger-menu";
 import { LocaleButton } from "@/components/ui/locale-button";
+import { ThemeButton } from "@/components/ui/theme-button";
 import { Separator } from "@/components/ui/separator";
 
 export default function Header() {
@@ -19,14 +20,14 @@ export default function Header() {
             <h1 className="text-primary">{t('appName')}</h1>
 
             <div className="flex items-center space-x-1 h-full py-3 lg:space-x-4">
-                {/* 
-                    -- TODO: Button to toggle dark/light mode --
-                    <ThemeButton />
-                    <Separator orientation="vertical" /> 
-                */}
+                <ThemeButton />
+                <Separator orientation="vertical" /> 
+               
                 <LocaleButton />
                 <Separator orientation="vertical" />
+
                 <HamburgerMenu menuItems={menuItems} />
+
                 <nav className="hidden lg:flex">
                     <ul className="flex space-x-4">
                         {menuItems.map((item) => (
