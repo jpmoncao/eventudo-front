@@ -5,6 +5,11 @@
             "home": "Home",
             "events": "Events",
             "about": "About"
+        },
+        "languages": {
+            "languages": "Languages",
+            "en": "English",
+            "pt": "Portuguese"
         }
     },
     "pages": {

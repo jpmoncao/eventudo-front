@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import HamburgerMenu, { MenuItem } from "@/components/ui/hamburger-menu";
+import { LocaleButton } from "@/components/ui/locale-button";
+import { Separator } from "@/components/ui/separator";
 
 export default function Header() {
     const t = useTranslations("globals");
@@ -13,17 +15,26 @@ export default function Header() {
     ]
 
     return (
-        <header className="flex items-center justify-between p-4 bg-background text-foreground">
+        <header className="flex items-center justify-between p-4 bg-background text-foreground h-20">
             <h1 className="text-primary">{t('appName')}</h1>
 
-            <HamburgerMenu menuItems={menuItems} />
-            <nav className="hidden lg:flex">
-                <ul className="flex space-x-4">
-                    {menuItems.map((item) => (
-                        <Link key={item.title} href={item.href ?? '/'} className="hover:underline hover:text-foreground/60">{item.title}</Link>
-                    ))}
-                </ul>
-            </nav>
+            <div className="flex items-center space-x-1 h-full py-3 lg:space-x-4">
+                {/* 
+                    -- TODO: Button to toggle dark/light mode --
+                    <ThemeButton />
+                    <Separator orientation="vertical" /> 
+                */}
+                <LocaleButton />
+                <Separator orientation="vertical" />
+                <HamburgerMenu menuItems={menuItems} />
+                <nav className="hidden lg:flex">
+                    <ul className="flex space-x-4">
+                        {menuItems.map((item) => (
+                            <Link key={item.title} href={item.href ?? '/'} className="hover:underline hover:text-foreground/60">{item.title}</Link>
+                        ))}
+                    </ul>
+                </nav>
+            </div>
         </header >
     );
 }

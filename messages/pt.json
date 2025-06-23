@@ -5,6 +5,11 @@
             "home": "Início",
             "events": "Eventos",
             "about": "Sobre"
+        },
+        "languages": {
+            "languages": "Idiomas",
+            "en": "Inglês",
+            "pt": "Português"
         }
     },
     "pages": {
