@@ -13,10 +13,10 @@ export default function HomePage() {
       <HeroSection />
       <SectionSeparator />
 
-      <GallerySection />
+      <CountersSection />
       <SectionSeparator />
 
-      <CountersSection />
+      <GallerySection />
       <SectionSeparator />
 
       <CtaSection />

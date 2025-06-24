@@ -39,16 +39,16 @@ export default async function RootLayout({
       <body
         className={`${lexend.variable} ${nunitosans.variable} antialiased`}
       >
-          <ThemeProvider 
-            attribute="class" 
-            defaultTheme="system" 
-            enableSystem
-            themes={["light", "dark"]} 
-          >
-            <NextIntlClientProvider>
-              {children}
-            </NextIntlClientProvider>
-          </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          themes={["light", "dark"]}
+        >
+          <NextIntlClientProvider>
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
