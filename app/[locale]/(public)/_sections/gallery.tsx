@@ -23,16 +23,14 @@ export default function GallerySection() {
             key={index}
             src={images[index]}
             alt={t("slideAlt", { eventName: index + 1 })}
-            className="w-full h-auto object-cover"
-            width={800}
-            height={450}
+            className="w-full h-full object-cover"
         />
     ));
 
     return (
-        <section>
+        <section className="space-y-4">
             <h1 className="text-4xl font-bold font-heading text-center">{t("title")}</h1>
-            <p className="mt-4 text-lg text-center">{t("description")}</p>
+            <p className="text-lg text-center">{t("description")}</p>
             <EmblaCarousel slides={slides} options={OPTIONS} />
         </section>
     );
