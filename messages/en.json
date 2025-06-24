@@ -1,10 +1,40 @@
 {
     "globals": {
         "appName": "Eventudo",
+        "businessName": "Eventudo",
         "header": {
             "home": "Home",
             "events": "Events",
             "about": "About"
+        },
+        "footer": {
+            "allRightsReserved": "All rights reserved",
+            "navigation": {
+                "title": "Navigate the site:",
+                "counters": "Information",
+                "gallery": "Photo Gallery",
+                "join": "Join Us"
+            },
+            "socialMedia": {
+                "title": "Social media:",
+                "socialMedia-1": {
+                    "name": "Instagram",
+                    "link": "https://www.instagram.com/eventudo"
+                },
+                "socialMedia-2": {
+                    "name": "TikTok",
+                    "link": "https://www.tiktok.com/@eventudo"
+                },
+                "contact": {
+                    "name": "Contact",
+                    "link": "mailto:pedrohjoao44@gmail.com"
+                }
+            },
+            "legal": {
+                "title": "Legal Terms:",
+                "privacyPolicy": "Privacy Policy",
+                "termsOfService": "Terms of Service"
+            }
         },
         "languages": {
             "languages": "Languages",
