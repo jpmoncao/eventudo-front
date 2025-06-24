@@ -40,6 +40,11 @@
                     "label": "Organizadores",
                     "value": 50
                 }
+            },
+            "cta": {
+                "title": "Junte-se à nossa comunidade",
+                "description": "Torne-se parte de uma comunidade vibrante que compartilha sua paixão e interesses.",
+                "button": "Junte-se agora"
             }
         }
     }

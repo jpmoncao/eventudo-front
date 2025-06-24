@@ -1,5 +1,3 @@
-import { useTranslations } from "next-intl";
-
 // Component imports
 import SectionSeparator from "./_components/section-separator";
 
@@ -7,10 +5,9 @@ import SectionSeparator from "./_components/section-separator";
 import HeroSection from "./_sections/hero";
 import GallerySection from "./_sections/gallery";
 import CountersSection from "./_sections/counters";
+import CtaSection from "./_sections/cta";
 
 export default function HomePage() {
-  const t = useTranslations("");
-
   return (
     <>
       <HeroSection />
@@ -21,6 +18,8 @@ export default function HomePage() {
 
       <CountersSection />
       <SectionSeparator />
+
+      <CtaSection />
     </>
   );
 }
