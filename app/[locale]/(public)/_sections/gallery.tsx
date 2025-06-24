@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { EmblaOptionsType } from 'embla-carousel'
 
 import EmblaCarousel from "@/components/ui/custom-carousel/js/EmblaCarousel";

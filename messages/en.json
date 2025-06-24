@@ -24,6 +24,22 @@
                 "title": "Our Events",
                 "description": "Explore our gallery of past and upcoming events.",
                 "slideAlt": "Image of event {eventName}"
+            },
+            "counters": {
+                "title": "Don't waste time",
+                "description": "Be part of our community and stay up to date with the best events.",
+                "item-1": {
+                    "label": "Events",
+                    "value": 150
+                },
+                "item-2": {
+                    "label": "Participants",
+                    "value": 10.000
+                },
+                "item-3": {
+                    "label": "Organizers",
+                    "value": 50
+                }
             }
         }
     }

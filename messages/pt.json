@@ -24,6 +24,22 @@
                 "title": "Nossos Eventos",
                 "description": "Explore nossa galeria de eventos passados e futuros.",
                 "slideAlt": "Imagem do evento {eventName}"
+            },
+            "counters": {
+                "title": "Não perca tempo!",
+                "description": "Faça parte da nossa comunidade e fique por dentro dos melhores eventos.",
+                "item-1": {
+                    "label": "Eventos",
+                    "value": 150
+                },
+                "item-2": {
+                    "label": "Participantes",
+                    "value": 10.000
+                },
+                "item-3": {
+                    "label": "Organizadores",
+                    "value": 50
+                }
             }
         }
     }
