@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 export default function CountersSection() {
     const t = useTranslations("pages.home.counters");
 
-    const iconClassName = "text-foreground w-14 h-14";
+    const iconClassName = "text-foreground w-12 h-12";
     const counters = [
         { icon: <Calendar className={iconClassName} />, label: t("item-1.label"), to: 150 },
         { icon: <User2 className={iconClassName} />, label: t("item-2.label"), to: 10000 },
@@ -16,7 +16,7 @@ export default function CountersSection() {
     return (
         <section className="space-y-4 px-4 py-8 md:py-32 border rounded-2xl shadow-[0_-10px_40px_10px] shadow-primary/5 max-w-[800px] mx-auto">
             <h1 className="text-4xl font-bold font-heading text-center">{t("title")}</h1>
-            <p className="text-lg text-center">{t("description")}</p>
+            <p className="text-lg text-center sm:max-w-2/3 mx-auto">{t("description")}</p>
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-8 w-full sm:w-[90%] mx-auto">
                 {counters.map((counter, index) => (
                     <div key={index} className="flex flex-col items-center gap-4">
