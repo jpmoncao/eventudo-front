@@ -14,7 +14,7 @@ export default function CountersSection() {
 
 
     return (
-        <section className="space-y-4 px-4 py-8 md:py-32 border rounded-2xl shadow-[0_-10px_40px_10px] shadow-primary/5 max-w-[800px] mx-auto">
+        <section className="space-y-4 px-4 py-8 md:py-32 border rounded-2xl shadow-[0_-10px_40px_10px] shadow-primary-foreground/20 dark:shadow-primary/5 max-w-[800px] mx-auto">
             <h1 className="text-4xl font-bold font-heading text-center">{t("title")}</h1>
             <p className="text-lg text-center sm:max-w-2/3 mx-auto">{t("description")}</p>
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-8 w-full sm:w-[90%] mx-auto">

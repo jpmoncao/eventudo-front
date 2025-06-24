@@ -14,7 +14,7 @@ export default function HeroSection() {
                 alt={t("pages.home.hero.imageAlt")}
                 width={500}
                 height={300}
-                className="mx-auto mt-8 drop-shadow-2xl"
+                className="mx-auto mt-8 drop-shadow-[0_0_40px] drop-shadow-primary-foreground/30 dark:drop-shadow-primary/30"
             />
             <div className="mt-6 w-full flex justify-center">
                 <Button className="cta-gradient">{t("pages.home.hero.cta")}</Button>
