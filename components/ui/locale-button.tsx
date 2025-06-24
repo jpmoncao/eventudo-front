@@ -5,6 +5,7 @@ import { useState, useTransition, useEffect } from "react"
 import { useTranslations } from "next-intl"
 import { Flag } from "lucide-react"
 
+import { routing } from '@/i18n/routing';
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -17,7 +18,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 const DEFAULT_LOCALE = "pt";
-const languages = ["pt", "en"] as const;
 
 export function LocaleButton() {
   const { locale } = useParams() as { locale: string }
@@ -54,7 +54,7 @@ export function LocaleButton() {
         <DropdownMenuLabel>{t("languages")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={position} onValueChange={handleChangeLocale}>
-            {languages.map((lang) => (
+            {routing.locales.map((lang) => (
               <DropdownMenuRadioItem key={lang} value={lang}>
                 {t(lang)}
                 </DropdownMenuRadioItem>
