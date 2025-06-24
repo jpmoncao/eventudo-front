@@ -11,7 +11,6 @@ import {
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 
-import '../css/sandbox.css'
 import '../css/embla.css'
 import { cn } from '@/lib/utils'
 

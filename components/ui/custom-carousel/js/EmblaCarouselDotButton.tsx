@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import { EmblaCarouselType } from 'embla-carousel'
 
-import '../css/sandbox.css'
 import '../css/embla.css'
 import { cn } from '@/lib/utils'
 
