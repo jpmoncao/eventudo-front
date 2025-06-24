@@ -19,6 +19,11 @@
                 "description": "Get your tickets for the most anticipated events of the year at the best prices!",
                 "imageAlt": "Event organization image",
                 "cta": "Buy Tickets"
+            },
+            "gallery": {
+                "title": "Our Events",
+                "description": "Explore our gallery of past and upcoming events.",
+                "slideAlt": "Image of event {eventName}"
             }
         }
     }

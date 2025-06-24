@@ -19,6 +19,11 @@
                 "description": "Garanta seus ingressos para os eventos mais esperados do ano com os melhores preços!",
                 "imageAlt": "Imagem de organização de eventos",
                 "cta": "Comprar ingressos"
+            },
+            "gallery": {
+                "title": "Nossos Eventos",
+                "description": "Explore nossa galeria de eventos passados e futuros.",
+                "slideAlt": "Imagem do evento {eventName}"
             }
         }
     }
