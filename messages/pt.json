@@ -14,8 +14,12 @@
     },
     "pages": {
         "home": {
-            "title": "Bem-vindo ao",
-            "description": "Garanta seus ingressos para os eventos mais esperados do ano com os melhores preços!"
+            "hero": {
+                "title": "Bem-vindo ao",
+                "description": "Garanta seus ingressos para os eventos mais esperados do ano com os melhores preços!",
+                "imageAlt": "Imagem de organização de eventos",
+                "cta": "Comprar ingressos"
+            }
         }
     }
 }

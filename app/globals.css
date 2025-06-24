@@ -24,6 +24,7 @@
   --border: hsl(20 5.9% 90%);
   --input: hsl(20 5.9% 90%);
   --ring: hsl(20 14.3% 4.1%);
+  --highlight: hsl(33, 96%, 53%);
 }
 
 .dark {
@@ -33,7 +34,7 @@
   --card-foreground: hsl(60 9.1% 97.8%);
   --popover: hsl(20 14.3% 4.1%);
   --popover-foreground: hsl(60 9.1% 97.8%);
-  --primary: hsl(47.9 95.8% 53.1%);
+  --primary: hsl(48, 96%, 53%);
   --primary-foreground: hsl(26 83.3% 14.1%);
   --secondary: hsl(12 6.5% 15.1%);
   --secondary-foreground: hsl(60 9.1% 97.8%);
@@ -87,6 +88,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-highlight: var(--highlight);
 }
 
 @layer base {
@@ -103,5 +105,21 @@
 
   h1 {
     @apply text-2xl font-heading font-semibold;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  .cta-gradient {
+    @apply bg-gradient-to-tr;
+    @apply from-highlight;
+    @apply to-primary;
+    @apply duration-500;
+    @apply border-highlight/50;
+    @apply hover:bg-gradient-to-bl;
+    @apply hover:shadow-lg;
+    @apply hover:border;
+    @apply hover:scale-105;
   }
 }
