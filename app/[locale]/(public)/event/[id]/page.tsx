@@ -1,12 +1,17 @@
+'use client'
+
+import { DateTimeFormatOptions, NumberFormatOptions, useTranslations } from "next-intl";
+import { useParams } from 'next/navigation';
 import Link from "next/link";
 import { CalendarClock, MapPinIcon, TicketCheck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { DateTimeFormatOptions, NumberFormatOptions } from "next-intl";
 
-export default async function EventPage({ params }: { params: { locale: string, id: string } }) {
-    const { id, locale } = params;
+export default function EventPage() {
+    const t = useTranslations('pages.event');
+
+    const { id, locale } = useParams();
 
     const locales = locale === 'pt' ? 'pt-BR' : 'en-US';
     const currency = locale === 'pt' ? 'BRL' : 'USD';
@@ -67,7 +72,7 @@ export default async function EventPage({ params }: { params: { locale: string, 
                     </p>
                 </div>
                 <Link href={`/checkout/${id}`} className="absolute top-0 right-0">
-                    <Button className="cta-gradient shadow-[0_0_20px_6px] shadow-primary/40 dark:shadow-primary/20"><TicketCheck /> Buy Ticket</Button>
+                    <Button className="cta-gradient shadow-[0_0_20px_6px] shadow-primary/40 dark:shadow-primary/20"><TicketCheck /> {t('buyTicket')}</Button>
                 </Link>
             </article>
 
@@ -75,11 +80,11 @@ export default async function EventPage({ params }: { params: { locale: string, 
 
             <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-lg font-semibold">Description</h2>
+                    <h2 className="text-lg font-semibold">{t('description')}</h2>
                     <p className="text-md text-foreground/80">{event.description}</p>
                 </div>
                 <div className="flex flex-col gap-0.5">
-                    <h2 className="text-lg font-semibold">Price</h2>
+                    <h2 className="text-lg font-semibold">{t('price')}</h2>
                     <p className="flex items-end gap-2">
                         <span className="text-3xl font-bold text-primary text-shadow-md text-shadow-primary-foreground/60">{
                             event.promotional.isActive
@@ -92,7 +97,7 @@ export default async function EventPage({ params }: { params: { locale: string, 
                     </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-lg font-semibold">Images</h2>
+                    <h2 className="text-lg font-semibold">{t('images')}</h2>
                     <div className="grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-4 px-2">
                         {event.images.map((image, index) => (
                             <img key={index} src={image} alt={`Event Image ${index + 1}`} className="w-full h-full rounded-md border" />
@@ -104,10 +109,10 @@ export default async function EventPage({ params }: { params: { locale: string, 
             <Separator className="my-4" />
 
             <article className="flex flex-col items-center gap-4 mx-auto">
-                <h3 className="text-2xl font-semibold">Garantir ingresso:</h3>
-                <Link href={`/checkout/${id}`} className="">
+                <h3 className="text-2xl font-semibold">{t('ensureTicket')}:</h3>
+                <Link href={`/checkout/${id}`} className="pb-12">
                     <Button className="flex items-center text-xl font-bold w-64 h-16 cta-gradient shadow-[0_0_40px_10px] shadow-primary/40 dark:shadow-primary/20">
-                        <TicketCheck className="size-6" /> Buy Ticket
+                        <TicketCheck className="size-6" /> {t('buyTicket')}
                     </Button>
                 </Link>
             </article>

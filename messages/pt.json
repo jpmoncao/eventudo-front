@@ -79,6 +79,13 @@
         },
         "events": {
             "eventsNotFoundByCategory": "Nenhum evento encontrado nesta categoria"
+        },
+        "event": {
+            "description": "Descrição",
+            "price": "Preço",
+            "images": "Imagens",
+            "buyTicket": "Comprar Ingresso",
+            "ensureTicket": "Garantir ingresso"
         }
     }
 }

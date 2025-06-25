@@ -79,6 +79,13 @@
         },
         "events": {
             "eventsNotFoundByCategory": "No events found in this category"
+        },
+        "event": {
+            "description": "Description",
+            "price": "Price",
+            "images": "Images",
+            "buyTicket": "Buy Ticket",
+            "ensureTicket": "Ensure Ticket"
         }
     }
 }
