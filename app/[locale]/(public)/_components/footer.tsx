@@ -7,7 +7,7 @@ export default function Footer() {
     const t = useTranslations();
 
     return (
-        <footer className="flex flex-col items-center justify-center w-full pt-12 pb-4 border-t bg-foreground/80 text-background dark:bg-foreground/10 dark:text-foreground gap-6">
+        <footer className="flex flex-col items-center justify-center w-full pt-12 pb-4 border-t bg-foreground/80 text-background dark:bg-foreground/10 dark:text-foreground gap-6 mt-12">
             <section className="w-full flex flex-col md:flex-row items-start justify-center md:justify-around gap-12 max-w-3xl px-4">
                 <article>
                     <ul className="flex flex-row md:flex-col flex-wrap md:flex-nowrap gap-x-12 gap-y-1">
