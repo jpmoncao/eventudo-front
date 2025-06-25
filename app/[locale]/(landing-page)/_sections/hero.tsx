@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
     const t = useTranslations("");
@@ -17,7 +18,11 @@ export default function HeroSection() {
                 className="mx-auto mt-8 drop-shadow-[0_0_40px] drop-shadow-primary-foreground/30 dark:drop-shadow-primary/30"
             />
             <div className="mt-6 w-full flex justify-center">
-                <Button className="cta-gradient">{t("pages.home.hero.cta")}</Button>
+                <Link href='/events'>
+                    <Button className="cta-gradient">
+                        {t("pages.home.hero.cta")}
+                    </Button>
+                </Link>
             </div>
         </section>
     )
