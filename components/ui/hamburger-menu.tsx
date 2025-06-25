@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { useParams } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { Menu, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -23,6 +25,9 @@ export type MenuItem = {
 
 const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item, depth = 0 }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const pathname = usePathname();
+  const params = useParams();
+  const isActive = '/' + params.locale + item.href === pathname;
 
   if (item.submenu) {
     return (
@@ -57,7 +62,7 @@ const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item,
       className={cn(
         "block py-2 text-lg font-medium transition-colors hover:text-primary",
         depth > 0 && "pl-4",
-        item.href === "/" && "text-primary"
+        isActive && "text-primary"
       )}
     >
       {item.title}
