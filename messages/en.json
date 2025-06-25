@@ -76,6 +76,9 @@
                 "description": "Become part of a vibrant community that shares your passion and interests.",
                 "button": "Join Now"
             }
+        },
+        "events": {
+            "eventsNotFoundByCategory": "No events found in this category"
         }
     }
 }

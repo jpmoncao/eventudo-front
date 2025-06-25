@@ -76,6 +76,9 @@
                 "description": "Torne-se parte de uma comunidade vibrante que compartilha sua paixão e interesses.",
                 "button": "Junte-se agora"
             }
+        },
+        "events": {
+            "eventsNotFoundByCategory": "Nenhum evento encontrado nesta categoria"
         }
     }
 }
