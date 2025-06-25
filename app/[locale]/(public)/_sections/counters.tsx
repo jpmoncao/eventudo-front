@@ -14,7 +14,7 @@ export default function CountersSection() {
 
 
     return (
-        <section className="bg-primary/30 dark:bg-primary/10 shadow-[0_0_40px_10px] shadow-primary/40 dark:shadow-primary/5 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border border-primary-foreground/60 dark:border-primary/90 space-y-4 px-4 py-8 md:py-32 rounded-2xl max-w-[800px] mx-auto">
+        <section id="counters" className="bg-primary/30 dark:bg-primary/10 shadow-[0_0_40px_10px] shadow-primary/40 dark:shadow-primary/5 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 border border-primary-foreground/60 dark:border-primary/90 space-y-4 px-4 py-8 md:py-32 rounded-2xl max-w-[800px] mx-auto">
             <h1 className="text-4xl font-bold font-heading text-center">{t("title")}</h1>
             <p className="text-lg text-center sm:max-w-2/3 mx-auto">{t("description")}</p>
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-8 w-full sm:w-[90%] mx-auto">

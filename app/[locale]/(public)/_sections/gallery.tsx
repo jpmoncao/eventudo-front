@@ -27,7 +27,7 @@ export default function GallerySection() {
     ));
 
     return (
-        <section className="space-y-4">
+        <section id="gallery" className="space-y-4">
             <h1 className="text-4xl font-bold font-heading text-center">{t("title")}</h1>
             <p className="text-lg text-center">{t("description")}</p>
             <EmblaCarousel slides={slides} options={OPTIONS} />
