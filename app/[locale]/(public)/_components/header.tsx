@@ -17,12 +17,14 @@ export default function Header() {
 
     return (
         <header className="flex items-center justify-between p-4 bg-background text-foreground h-20">
-            <h1 className="text-primary">{t('appName')}</h1>
+            <Link href='/'>
+                <h1 className="text-primary">{t('appName')}</h1>
+            </Link>
 
             <div className="flex items-center space-x-1 h-full py-3 lg:space-x-4">
                 <ThemeButton />
-                <Separator orientation="vertical" /> 
-               
+                <Separator orientation="vertical" />
+
                 <LocaleButton />
                 <Separator orientation="vertical" />
 
