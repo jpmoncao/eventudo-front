@@ -1,5 +1,7 @@
+// Lib Imports
 import React from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 // Components Imports
 import {
@@ -10,31 +12,17 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
-
 import CardCarousel from "./_components/card-carousel";
-import { useTranslations } from "next-intl";
 
-// Tipagem dos eventos
-type EventType = {
-    id: string;
-    name: string;
-    description: string;
-    image: string;
-    id_category: string;
-};
-
-type CategoryType = {
-    id: string;
-    name: string;
-    description: string;
-};
+// Interfaces Imports
+import { IEvent, ICategory } from "@/interfaces/event";
 
 const EventCategory = ({
     category,
     events
 }: {
-    category: CategoryType;
-    events: EventType[];
+    category: ICategory;
+    events: IEvent[];
 }) => {
     const t = useTranslations("pages.events");
     const categoryEvents = events.filter(event => event.id_category === category.id);
@@ -76,7 +64,7 @@ const EventCategory = ({
                                     className="p-1 block h-full"
                                 >
                                     <CardCarousel.Root
-                                        imageURL={event.image}
+                                        imageURL={(event.images && event.images[0]?.url) ? event.images[0].url : 'https://placehold.co/1024x768?text=No+Image'}
                                         imageAlt={event.name}
                                         className="w-full h-full"
                                     >
@@ -98,55 +86,42 @@ const EventCategory = ({
     )
 }
 
-export default function EventsPage() {
-    const events: EventType[] = [
-        {
-            id: "1",
-            name: "Evento",
-            description: "Lorem ipsum dolor sit amet.",
-            id_category: "1",
-            image: "https://southcorp.com.br/wp-content/uploads/2018/10/sEGURO-eVENTOS-1.jpg",
-        },
-        {
-            id: "2",
-            name: "Evento",
-            description: "Lorem ipsum dolor sit amet.",
-            id_category: "1",
-            image: "https://www.sp.senac.br/documents/portlet_file_entry/51828463/dicas+para+um+evento+de+sucesso.webp/0453a6e1-5c79-ba90-d46d-009062d3ad4d",
-        },
-        {
-            id: "3",
-            name: "Evento",
-            description: "Lorem ipsum dolor sit amet.",
-            id_category: "1",
-            image: "https://digipaper.com.br/wp-content/uploads/2019/01/2018_05_04.jpg",
-        },
-        {
-            id: "4",
-            name: "Evento",
-            description: "Lorem ipsum dolor sit amet.",
-            id_category: "2",
-            image: "https://media.starlightcms.io/workspaces/pague-menos/portal-sempre-bem/optimized/istock-1227545308-ya8rnoqcq7.jpeg",
-        },
-        {
-            id: "5",
-            name: "Evento",
-            description: "Lorem ipsum dolor sit amet.",
-            id_category: "3",
-            image: "https://www.espacomatodentro.com.br/wp-content/uploads/2019/07/espaco-para-eventos-em-campinas.jpg",
-        },
-    ];
+const fetchEvents = async () => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_BASEURL + '/events');
 
-    const categories: CategoryType[] = [
-        { id: "1", name: "Categoria 1", description: "Descrição da Categoria 1" },
-        { id: "2", name: "Categoria 2", description: "Descrição da Categoria 2" },
-        { id: "3", name: "Categoria 3", description: "Descrição da Categoria 3" },
-        { id: "4", name: "Categoria 4", description: "Descrição da Categoria 4" }
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json.data as IEvent[];
+};
+
+const fetchCategories = async () => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_BASEURL + '/categories');
+    
+    if (!res.ok) return null;
+
+    const json = await res.json();
+    return json.data as ICategory[];
+};
+
+export default function EventsPage() {
+    const events = React.use(fetchEvents());
+    // const categories = React.use(fetchCategories());
+
+    const categories: ICategory[] = [
+        { id: 1, name: "Categoria 1", description: "Descrição da Categoria 1" },
+        { id: 2, name: "Categoria 2", description: "Descrição da Categoria 2" },
+        { id: 3, name: "Categoria 3", description: "Descrição da Categoria 3" },
+        { id: 4, name: "Categoria 4", description: "Descrição da Categoria 4" },
+        { id: 5, name: "Categoria 5", description: "Descrição da Categoria 5" },
+        { id: 6, name: "Categoria 6", description: "Descrição da Categoria 6" }
     ];
 
     return (
         <section className="space-y-8">
             {
+                events &&
+                categories &&
                 categories.map((category) => (
                     <EventCategory
                         key={category.id}

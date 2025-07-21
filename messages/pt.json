@@ -85,7 +85,8 @@
             "price": "Preço",
             "images": "Imagens",
             "buyTicket": "Comprar Ingresso",
-            "ensureTicket": "Garantir ingresso"
+            "ensureTicket": "Garantir ingresso",
+            "backToEvents": "Voltar aos eventos"
         }
     }
 }

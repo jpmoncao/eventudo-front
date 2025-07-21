@@ -85,7 +85,8 @@
             "price": "Price",
             "images": "Images",
             "buyTicket": "Buy Ticket",
-            "ensureTicket": "Ensure Ticket"
+            "ensureTicket": "Ensure Ticket",
+            "backToEvents": "Back to Events"
         }
     }
 }
