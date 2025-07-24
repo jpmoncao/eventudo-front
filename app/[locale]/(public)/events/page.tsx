@@ -60,6 +60,7 @@ const EventCategory = ({
                                 className="basis-full sm:basis-1/2 md:basis-1/3"
                             >
                                 <Link
+                                    prefetch={false}
                                     href={`/event/${event.id}`}
                                     className="p-1 block h-full"
                                 >
@@ -97,25 +98,16 @@ const fetchEvents = async () => {
 
 const fetchCategories = async () => {
     const res = await fetch(process.env.NEXT_PUBLIC_API_BASEURL + '/categories');
-    
+
     if (!res.ok) return null;
 
     const json = await res.json();
     return json.data as ICategory[];
 };
 
-export default function EventsPage() {
-    const events = React.use(fetchEvents());
-    // const categories = React.use(fetchCategories());
-
-    const categories: ICategory[] = [
-        { id: 1, name: "Categoria 1", description: "Descrição da Categoria 1" },
-        { id: 2, name: "Categoria 2", description: "Descrição da Categoria 2" },
-        { id: 3, name: "Categoria 3", description: "Descrição da Categoria 3" },
-        { id: 4, name: "Categoria 4", description: "Descrição da Categoria 4" },
-        { id: 5, name: "Categoria 5", description: "Descrição da Categoria 5" },
-        { id: 6, name: "Categoria 6", description: "Descrição da Categoria 6" }
-    ];
+export default async function EventsPage() {
+    const events = await fetchEvents();
+    const categories = await fetchCategories();
 
     return (
         <section className="space-y-8">

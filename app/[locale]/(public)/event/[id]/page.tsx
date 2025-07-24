@@ -22,23 +22,21 @@ interface EventPageProps {
 
 const fetchEvent = async (id: string): Promise<IEvent | null> => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASEURL}/events/${id}`, {
-        cache: 'no-store',
+        cache: "force-cache"
     });
 
     if (!res.ok) return null;
-    
+
     const json = await res.json();
     return json.data as IEvent;
 };
 
 export default async function EventPage({ params }: EventPageProps) {
-    const t = await getTranslations("pages.event");
+    const { id, locale } = await params;
 
-    if (!params || !params.id) return notFound();
-    const id = params.id || '';
-    const locale = params.locale || 'pt';
+    if (!id) return notFound();
 
-    const locales = locale === "pt" ? "pt-BR" : "en-US";
+    const locales = locale === "en" ? "en-US" : "pt-BR";
     const dateOptions: Intl.DateTimeFormatOptions = {
         weekday: "long",
         year: "numeric",
@@ -50,6 +48,8 @@ export default async function EventPage({ params }: EventPageProps) {
 
     const event = await fetchEvent(id);
     if (!event) return notFound();
+
+    const t = await getTranslations("pages.event");
 
     return (
         <section>
@@ -71,7 +71,7 @@ export default async function EventPage({ params }: EventPageProps) {
                     </p>
                 </div>
                 <Link href={`/events`} className="absolute top-0 left-0">
-                    <Button variant='ghost' >
+                    <Button variant='ghost' className="has-[>svg]:pl-0" >
                         <ChevronLeft /> {t("backToEvents")}
                     </Button>
                 </Link>
