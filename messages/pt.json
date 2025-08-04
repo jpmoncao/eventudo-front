@@ -87,6 +87,101 @@
             "buyTicket": "Comprar Ingresso",
             "ensureTicket": "Garantir ingresso",
             "backToEvents": "Voltar aos eventos"
+        },
+        "signup": {
+            "header": {
+                "title": "Cadastra-se",
+                "description": "Por favor, preencha as seguintes informações:"
+            },
+            "step1": {
+                "label": "Dados da conta"
+            },
+            "step2": {
+                "label": "Dados pessoais"
+            },
+            "step3": {
+                "label": "Localização"
+            },
+            "fields": {
+                "name": {
+                    "required": "O nome não foi informado",
+                    "invalid": "O nome é inválido",
+                    "min": "O nome deve conter no mínimo {min} caracteres",
+                    "max": "O nome deve conter no máximo {max} caracteres"
+                },
+                "lastName": {
+                    "required": "O sobrenome não foi informado",
+                    "invalid": "O sobrenome é inválido",
+                    "min": "O sobrenome deve conter no mínimo {min} caracteres",
+                    "max": "O sobrenome deve conter no máximo {max} caracteres"
+                },
+                "birthDate": {
+                    "required": "A data de nascimento não foi informada",
+                    "invalid": "A data de nascimento é inválida",
+                    "min": "A data de nascimento deve conter no mínimo {min} caracteres",
+                    "max": "A data de nascimento deve conter no máximo {max} caracteres"
+                },
+                "cpf": {
+                    "required": "O documento não foi informado",
+                    "invalid": "O documento é inválido",
+                    "min": "O documento deve conter no mínimo 11 caracteres",
+                    "max": "O documento deve conter no máximo {max} caracteres"
+                },
+                "phone": {
+                    "required": "O telefone não foi informado",
+                    "invalid": "O telefone é inválido",
+                    "min": "O telefone deve conter no mínimo 8 caracteres",
+                    "max": "O telefone deve conter no máximo {max} caracteres"
+                },
+                "address": {
+                    "required": "O endereço não foi informado",
+                    "invalid": "O endereço é inválido",
+                    "min": "O endereço deve conter no mínimo {min} caracteres",
+                    "max": "O endereço deve conter no máximo {max} caracteres"
+                },
+                "city": {
+                    "required": "A cidade não foi informada",
+                    "invalid": "A cidade é inválida",
+                    "min": "A cidade deve conter no mínimo {min} caracteres",
+                    "max": "A cidade deve conter no máximo {max} caracteres"
+                },
+                "state": {
+                    "required": "O estado não foi informado",
+                    "invalid": "O estado é inválido",
+                    "min": "O estado deve conter no mínimo {min} caracteres",
+                    "max": "O estado deve conter no máximo {max} caracteres"
+                },
+                "zipCode": {
+                    "required": "O código postal não foi informado",
+                    "invalid": "O código postal é inválido",
+                    "min": "O código postal deve conter no mínimo 8 caracteres",
+                    "max": "O código postal deve conter no máximo {max} caracteres"
+                },
+                "email": {
+                    "required": "O email não foi informado",
+                    "invalid": "O email é inválido",
+                    "min": "O email deve conter no mínimo {min} caracteres",
+                    "max": "O email deve conter no máximo {max} caracteres"
+                },
+                "password": {
+                    "required": "A senha não foi informada",
+                    "invalid": "A senha é inválida",
+                    "min": "A senha deve conter no mínimo 6 caracteres",
+                    "max": "A senha deve conter no máximo {max} caracteres"
+                },
+                "confirmPassword": {
+                    "required": "A senha não foi informada",
+                    "invalid": "A senha é inválida",
+                    "min": "A senha deve conter no mínimo 6 caracteres",
+                    "max": "A senha deve conter no máximo {max} caracteres",
+                    "mismatch": "As senhas não coincidem"
+                }
+            },
+            "buttons": {
+                "back": "Voltar",
+                "next": "Próximo",
+                "submit": "Confirmar"
+            }
         }
     }
 }
