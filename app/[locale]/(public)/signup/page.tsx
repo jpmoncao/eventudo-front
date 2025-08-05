@@ -33,9 +33,15 @@ export default function SignupPage() {
                 })
             })
             .catch(function (error) {
-                toast.error('Erro ao cadastrar usuário!', {
-                    description: error.response.data.message,
-                })
+                console.error(error)
+                switch (error.status) {
+                    case 500:
+                        toast.error('Erro inesperado no servidor!')
+                        break;
+                    default:
+                        toast.error('Erro ao cadastrar usuário!', { description: error.response.data.message })
+                        break;
+                }
             });
     }
 

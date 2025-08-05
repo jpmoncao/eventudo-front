@@ -6,11 +6,13 @@ import { useTranslations } from 'next-intl'
 
 import { FormStep, MultiStepFormContextProps, SavedFormState } from '../_types/form'
 import { combinedSchema, CombinedType } from '../_validators/full-flow'
-import PrevButton from '../_components/prev-button'
+import PrevButton from './prev-button'
+import NextButton from './next-button'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import NextButton from './next-button'
+
+import { cn } from '@/lib/utils'
 
 export const MultiStepFormContext = createContext<MultiStepFormContextProps | null>(null)
 
@@ -43,7 +45,7 @@ const MultiStepForm = ({ steps, defaultValues, onComplete }: IMultiStepForm) => 
 
     const saveFormState = (stepIndex: number) => {
         const formValues = methods.getValues()
-        
+
         setSavedFormState({
             currentStepIndex: stepIndex ?? currentStepIndex,
             formValues,
@@ -114,8 +116,9 @@ const MultiStepForm = ({ steps, defaultValues, onComplete }: IMultiStepForm) => 
     async function submitSteppedForm(data: z.infer<typeof combinedSchema>) {
         try {
             // Perform your form submission logic here
-            await onComplete?.(data)
-            clearFormState()
+            await onComplete?.(data);
+
+            clearFormState();
         } catch (error) {
             console.error('Form submission error:', error)
         }
@@ -134,27 +137,50 @@ const MultiStepForm = ({ steps, defaultValues, onComplete }: IMultiStepForm) => 
 
     return (
         <MultiStepFormContext.Provider value={value}>
-            <Card className="shadow-sm">
-                <CardHeader>
-                    <CardTitle className="text-lg">{t('header.title')}</CardTitle>
-                    <CardDescription>{t('header.description')}</CardDescription>
-                </CardHeader>
-                <Separator />
-                <CardContent>
-                    <FormProvider {...methods}>
-                        <form onSubmit={methods.handleSubmit(submitSteppedForm)} className="grid gap-y-4">
-                            <h1 className='pt-5 text-xl font-bold'>{currentStep.title}</h1>
+            <div className="space-y-4">
+                <div className="flex items-center justify-center">
+                    {steps.map((_, index) => (
+                        <div key={index} className="flex items-center">
+                            <div
+                                className={cn(
+                                    "w-4 h-4 rounded-full transition-all duration-300",
+                                    index <= currentStepIndex ? "bg-primary" : "bg-primary/30"
+                                )}
+                            />
+                            {index < steps.length - 1 && (
+                                <div
+                                    className={cn(
+                                        "w-8 h-0.5",
+                                        index < currentStepIndex ? "bg-primary" : "bg-primary/30"
+                                    )}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </div>
 
-                            {currentStep.component}
+                <Card className="shadow-sm">
+                    <CardHeader>
+                        <CardTitle className="text-lg">{t('header.title')}</CardTitle>
+                        <CardDescription>{t('header.description')}</CardDescription>
+                    </CardHeader>
+                    <Separator />
+                    <CardContent>
+                        <FormProvider {...methods}>
+                            <form onSubmit={methods.handleSubmit(submitSteppedForm)} className="grid gap-y-4">
+                                <h1 className='pt-5 text-xl font-bold'>{currentStep.title}</h1>
 
-                            <div className="flex justify-between mt-4">
-                                <PrevButton text={t('buttons.back')} />
-                                <NextButton text={currentStepIndex === steps.length - 1 ? t('buttons.submit') : t('buttons.next')} />
-                            </div>
-                        </form>
-                    </FormProvider>
-                </CardContent>
-            </Card>
+                                {currentStep.component}
+
+                                <div className="flex justify-between mt-4">
+                                    <PrevButton text={t('buttons.back')} />
+                                    <NextButton text={currentStepIndex === steps.length - 1 ? t('buttons.submit') : t('buttons.next')} />
+                                </div>
+                            </form>
+                        </FormProvider>
+                    </CardContent>
+                </Card>
+            </div>
         </MultiStepFormContext.Provider >
     )
 }
