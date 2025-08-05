@@ -10,10 +10,10 @@
         "footer": {
             "allRightsReserved": "All rights reserved",
             "navigation": {
-                "title": "Navigate the site:",
+                "title": "Browse the site:",
                 "counters": "Information",
-                "gallery": "Photo Gallery",
-                "join": "Join Us"
+                "gallery": "Photo gallery",
+                "join": "Join us"
             },
             "socialMedia": {
                 "title": "Social media:",
@@ -31,7 +31,7 @@
                 }
             },
             "legal": {
-                "title": "Legal Terms:",
+                "title": "Legal terms:",
                 "privacyPolicy": "Privacy Policy",
                 "termsOfService": "Terms of Service"
             }
@@ -48,23 +48,23 @@
                 "title": "Welcome to",
                 "description": "Get your tickets for the most anticipated events of the year at the best prices!",
                 "imageAlt": "Event organization image",
-                "cta": "Buy Tickets"
+                "cta": "Buy tickets"
             },
             "gallery": {
                 "title": "Our Events",
                 "description": "Explore our gallery of past and upcoming events.",
-                "slideAlt": "Image of event {eventName}"
+                "slideAlt": "Event image {eventName}"
             },
             "counters": {
-                "title": "Don't waste time",
-                "description": "Be part of our community and stay up to date with the best events.",
+                "title": "Don’t waste time!",
+                "description": "Join our community and stay tuned to the best events.",
                 "item-1": {
                     "label": "Events",
                     "value": 150
                 },
                 "item-2": {
                     "label": "Participants",
-                    "value": 10.000
+                    "value": 10000
                 },
                 "item-3": {
                     "label": "Organizers",
@@ -74,7 +74,7 @@
             "cta": {
                 "title": "Join our community",
                 "description": "Become part of a vibrant community that shares your passion and interests.",
-                "button": "Join Now"
+                "button": "Join now"
             }
         },
         "events": {
@@ -85,8 +85,108 @@
             "price": "Price",
             "images": "Images",
             "buyTicket": "Buy Ticket",
-            "ensureTicket": "Ensure Ticket",
-            "backToEvents": "Back to Events"
+            "ensureTicket": "Secure ticket",
+            "backToEvents": "Back to events"
+        },
+        "signup": {
+            "header": {
+                "title": "Sign Up",
+                "description": "Please fill in the following information:"
+            },
+            "step1": {
+                "label": "Account information"
+            },
+            "step2": {
+                "label": "Personal information"
+            },
+            "step3": {
+                "label": "Location"
+            },
+            "fields": {
+                "name": {
+                    "required": "Name is required",
+                    "invalid": "Invalid name",
+                    "min": "Name must be at least {min} characters long",
+                    "max": "Name must be at most {max} characters long"
+                },
+                "lastName": {
+                    "required": "Last name is required",
+                    "invalid": "Invalid last name",
+                    "min": "Last name must be at least {min} characters long",
+                    "max": "Last name must be at most {max} characters long"
+                },
+                "birthDate": {
+                    "required": "Birth date is required",
+                    "invalid": "Invalid birth date",
+                    "min": "Birth date must be at least {min} characters long",
+                    "max": "Birth date must be at most {max} characters long"
+                },
+                "cpf": {
+                    "required": "Document is required",
+                    "invalid": "Invalid document",
+                    "min": "Document must be at least 11 characters long",
+                    "max": "Document must be at most {max} characters long"
+                },
+                "phone": {
+                    "required": "Phone number is required",
+                    "invalid": "Invalid phone number",
+                    "min": "Phone number must be at least 8 characters long",
+                    "max": "Phone number must be at most {max} characters long"
+                },
+                "address": {
+                    "required": "Address is required",
+                    "invalid": "Invalid address",
+                    "min": "Address must be at least {min} characters long",
+                    "max": "Address must be at most {max} characters long"
+                },
+                "city": {
+                    "required": "City is required",
+                    "invalid": "Invalid city",
+                    "min": "City must be at least {min} characters long",
+                    "max": "City must be at most {max} characters long"
+                },
+                "state": {
+                    "required": "State is required",
+                    "invalid": "Invalid state",
+                    "min": "State must be at least {min} characters long",
+                    "max": "State must be at most {max} characters long"
+                },
+                "zipCode": {
+                    "required": "Zip code is required",
+                    "invalid": "Invalid zip code",
+                    "min": "Zip code must be at least 8 characters long",
+                    "max": "Zip code must be at most {max} characters long"
+                },
+                "email": {
+                    "required": "Email is required",
+                    "invalid": "Invalid email",
+                    "min": "Email must be at least {min} characters long",
+                    "max": "Email must be at most {max} characters long"
+                },
+                "password": {
+                    "required": "Password is required",
+                    "invalid": "Invalid password",
+                    "min": "Password must be at least 6 characters long",
+                    "max": "Password must be at most {max} characters long"
+                },
+                "confirmPassword": {
+                    "required": "Password confirmation is required",
+                    "invalid": "Invalid password confirmation",
+                    "min": "Password confirmation must be at least 6 characters long",
+                    "max": "Password confirmation must be at most {max} characters long",
+                    "mismatch": "Passwords do not match"
+                }
+            },
+            "buttons": {
+                "back": "Back",
+                "next": "Next",
+                "submit": "Submit"
+            }
+        }
+    },
+    "messages": {
+        "success": {
+            "signup": "User registered successfully!"
         }
     }
 }

@@ -183,5 +183,10 @@
                 "submit": "Confirmar"
             }
         }
+    },
+    "messages": {
+        "success": {
+            "signup": "Cadastro do usuário feito com sucesso!"
+        }
     }
 }

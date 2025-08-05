@@ -1,18 +1,24 @@
 import { useTranslations } from "next-intl"
-import { Path, UseFormReturn } from "react-hook-form"
+import { Path, useFormContext } from "react-hook-form"
 
 import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form"
 import { PasswordInput } from "@/components/ui/password-input"
 import { Input } from "@/components/ui/input"
+import { combinedSchema } from "../_validators/full-flow"
+import z from "zod"
+import { useMultiStepForm } from "../_hooks/use-stepped-form"
+import NextButton from "../_components/next-button"
 
-export default function LoginStep<T extends Record<string, any>>(form: UseFormReturn<T>) {
+export default function LoginStep() {
     const t = useTranslations();
+
+    const form = useFormContext<z.infer<typeof combinedSchema>>()
 
     return (
         <>
             <FormField
                 control={form.control}
-                name={"email" as Path<T>}
+                name="email"
                 render={({ field }) => (
                     <FormItem>
                         <FormLabel>Email</FormLabel>
@@ -30,7 +36,7 @@ export default function LoginStep<T extends Record<string, any>>(form: UseFormRe
                 <div className="col-span-6">
                     <FormField
                         control={form.control}
-                        name={"password" as Path<T>}
+                        name="password"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Senha</FormLabel>
@@ -49,7 +55,7 @@ export default function LoginStep<T extends Record<string, any>>(form: UseFormRe
                 <div className="col-span-6">
                     <FormField
                         control={form.control}
-                        name={"confirmPassword" as Path<T>}
+                        name="confirmPassword"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Confirmar Senha</FormLabel>

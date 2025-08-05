@@ -1,54 +1,87 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { z } from 'zod'
-import { UseFormReturn } from 'react-hook-form'
+import { toast } from 'sonner'
 
-import MultiStepForm from './_components/multistep-form'
-import LoginStep from './_components/login-step'
-import PersonalStep from './_components/personal-step'
-import LocationStep from './_components/location-step'
+import { api } from '@/lib/axios'
 
-import { loginSchema, LoginFormData } from './_validators/login'
-import { personalSchema, PersonalFormData } from './_validators/personal'
-import { locationSchema, LocationFormData } from './_validators/location'
+import MultiStepForm from './_components/stepped-form'
+import LoginStep from './_steps/login-step'
+import PersonalStep from './_steps/personal-step'
+import LocationStep from './_steps/location-step'
 
-const signupSchema = loginSchema.merge(personalSchema).merge(locationSchema);
-type SignupFormData = z.infer<typeof signupSchema>
+import { loginSchema } from './_validators/login'
+import { personalSchema } from './_validators/personal'
+import { locationSchema } from './_validators/location'
+
+import { FormStep } from './_types/form'
+import { CombinedType } from './_validators/full-flow'
 
 export default function SignupPage() {
-    const t = useTranslations('pages.signup');
+    const t = useTranslations();
 
-    const steps = [
-        {
-            key: "step1",
-            label: t('step1.label'),
-            fields: (form: UseFormReturn<SignupFormData>) => LoginStep(form),
-            fieldNames: ['email', 'password', 'confirmPassword'] as (keyof LoginFormData)[],
-            schema: loginSchema
-        },
-        {
-            key: "step2",
-            label: t('step2.label'),
-            fields: (form: UseFormReturn<SignupFormData>) => PersonalStep(form),
-            fieldNames: ['name', 'lastName', 'cpf', 'birthDate', 'phone'] as (keyof PersonalFormData)[],
-            schema: personalSchema
-        },
-        {
-            key: "step3",
-            label: t('step3.label'),
-            fields: (form: UseFormReturn<SignupFormData>) => LocationStep(form),
-            fieldNames: ['address', 'city', 'state', 'zipCode'] as (keyof LocationFormData)[],
-            schema: locationSchema
-        }
-    ]
+    const saveUser = async (data: CombinedType) => {
+        const userData: Partial<CombinedType> = data;
+
+        delete userData.confirmPassword;
+
+        const res = await api
+            .post('signup/', userData)
+            .then(function (response) {
+                toast.success('Usuário cadastrado com sucesso!', {
+                    description: t('messages.success.' + response.data.message)
+                })
+            })
+            .catch(function (error) {
+                toast.error('Erro ao cadastrar usuário!', {
+                    description: error.response.data.message,
+                })
+            });
+    }
+
+    const steps: FormStep[] = [{
+        title: t('pages.signup.step1.label'),
+        component: <LoginStep />,
+        position: 1,
+        validationSchema: loginSchema,
+        fields: ['email', 'password', 'confirmPassword'],
+    },
+    {
+        title: t('pages.signup.step2.label'),
+        component: <PersonalStep />,
+        position: 2,
+        validationSchema: personalSchema,
+        fields: ['name', 'lastName', 'cpf', 'birthDate', 'phone'],
+    },
+    {
+        title: t('pages.signup.step3.label'),
+        component: <LocationStep />,
+        position: 3,
+        validationSchema: locationSchema,
+        fields: ['address', 'city', 'state', 'zipCode'],
+    }]
+
+    const defaultValues = {
+        email: '',
+        password: '',
+        confirmPassword: '',
+        name: '',
+        lastName: '',
+        cpf: '',
+        birthDate: undefined,
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        zipCode: ''
+    }
 
     return (
         <section>
-            <MultiStepForm<SignupFormData>
+            <MultiStepForm
                 steps={steps}
-                onComplete={(data) => console.log("Form data:", data)}
-            />
+                defaultValues={defaultValues}
+                onComplete={saveUser} />
         </section>
     )
 }

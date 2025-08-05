@@ -1,16 +1,22 @@
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useTranslations } from "next-intl";
-import { Path, UseFormReturn } from "react-hook-form"
+import { useFormContext } from "react-hook-form"
+import z from "zod";
+import { combinedSchema } from "../_validators/full-flow";
+import { useMultiStepForm } from "../_hooks/use-stepped-form";
+import NextButton from "../_components/next-button";
 
-export default function LocationStep<T extends Record<string, any>>(form: UseFormReturn<T>) {
+export default function LocationStep() {
     const t = useTranslations();
+
+    const form = useFormContext<z.infer<typeof combinedSchema>>()
 
     return (
         <>
             <FormField
                 control={form.control}
-                name={"address" as Path<T>}
+                name="address"
                 render={({ field }) => (
                     <FormItem>
                         <FormLabel>Endereço Completo</FormLabel>
@@ -34,7 +40,7 @@ export default function LocationStep<T extends Record<string, any>>(form: UseFor
                 <div className="col-span-6">
                     <FormField
                         control={form.control}
-                        name={"city" as Path<T>}
+                        name="city"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Cidade</FormLabel>
@@ -57,7 +63,7 @@ export default function LocationStep<T extends Record<string, any>>(form: UseFor
                 <div className="col-span-6">
                     <FormField
                         control={form.control}
-                        name={"state" as Path<T>}
+                        name="state"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Estado</FormLabel>
@@ -80,7 +86,7 @@ export default function LocationStep<T extends Record<string, any>>(form: UseFor
 
             <FormField
                 control={form.control}
-                name={"zipCode" as Path<T>}
+                name="zipCode"
                 render={({ field }) => (
                     <FormItem>
                         <FormLabel>CEP</FormLabel>

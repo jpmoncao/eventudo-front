@@ -1,9 +1,10 @@
 // Lib imports
-import { Path, UseFormReturn } from "react-hook-form"
+import { Path, useFormContext, UseFormReturn } from "react-hook-form"
 import { ptBR, enUS } from "react-day-picker/locale";
 import { useTranslations } from "next-intl";
 import { format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
+import z from "zod";
 
 // Component imports
 import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form"
@@ -16,6 +17,10 @@ import { Button } from "@/components/ui/button"
 // Utils imports
 import { cn } from "@/lib/utils"
 
+import { combinedSchema } from "../_validators/full-flow";
+import { useMultiStepForm } from "../_hooks/use-stepped-form";
+import NextButton from "../_components/next-button";
+
 const DEFAULT_COUNTRY = "BR";
 
 const calendarLocales = {
@@ -23,8 +28,10 @@ const calendarLocales = {
     en: enUS
 };
 
-export default function PersonalStep<T extends Record<string, any>>(form: UseFormReturn<T>) {
+export default function PersonalStep() {
     const t = useTranslations();
+
+    const form = useFormContext<z.infer<typeof combinedSchema>>()
 
     return (
         <>
@@ -32,7 +39,7 @@ export default function PersonalStep<T extends Record<string, any>>(form: UseFor
                 <div className="col-span-6">
                     <FormField
                         control={form.control}
-                        name={"name" as Path<T>}
+                        name="name"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Nome</FormLabel>
@@ -54,7 +61,7 @@ export default function PersonalStep<T extends Record<string, any>>(form: UseFor
                 <div className="col-span-6">
                     <FormField
                         control={form.control}
-                        name={"lastName" as Path<T>}
+                        name="lastName"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Sobrenome</FormLabel>
@@ -77,7 +84,7 @@ export default function PersonalStep<T extends Record<string, any>>(form: UseFor
 
             <FormField
                 control={form.control}
-                name={"cpf" as Path<T>}
+                name="cpf"
                 render={({ field }) => (
                     <FormItem>
                         <FormLabel>CPF</FormLabel>
@@ -97,7 +104,7 @@ export default function PersonalStep<T extends Record<string, any>>(form: UseFor
 
             <FormField
                 control={form.control}
-                name={"birthDate" as Path<T>}
+                name="birthDate"
                 render={({ field }) => (
                     <FormItem className="flex flex-col">
                         <FormLabel>Data de Nascimento</FormLabel>
@@ -141,7 +148,7 @@ export default function PersonalStep<T extends Record<string, any>>(form: UseFor
 
             <FormField
                 control={form.control}
-                name={"phone" as Path<T>}
+                name="phone"
                 render={({ field }) => (
                     <FormItem className="flex flex-col items-start">
                         <FormLabel>Celular</FormLabel>
