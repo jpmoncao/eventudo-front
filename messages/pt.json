@@ -182,11 +182,42 @@
                 "next": "Próximo",
                 "submit": "Confirmar"
             }
+        },
+        "login": {
+            "header": {
+                "title": "Faça login",
+                "description": "Insira seus dados para entrar na sua conta"
+            },
+            "buttons": {
+                "submit": "Entrar"
+            },
+            "fields": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Insira seu email",
+                    "required": "O email não foi informado",
+                    "invalid": "O email é inválido",
+                    "min": "O email deve conter no mínimo {min} caracteres",
+                    "max": "O email deve conter no máximo {max} caracteres"
+                },
+                "password": {
+                    "label": "Senha",
+                    "placeholder": "Insira sua senha",
+                    "required": "A senha não foi informada",
+                    "invalid": "A senha é inválida",
+                    "min": "A senha deve conter no mínimo 6 caracteres",
+                    "max": "A senha deve conter no máximo {max} caracteres"
+                }
+            }
         }
     },
     "messages": {
         "success": {
-            "signup": "Cadastro do usuário feito com sucesso!"
+            "signup": "Cadastro do usuário efetuado com sucesso!",
+            "login": "Login efetuado com sucesso!"
+        },
+        "errors": {
+            "unexpected": "Erro inesperado no servidor!"
         }
     }
 }

@@ -184,9 +184,40 @@
             }
         }
     },
+    "login": {
+        "header": {
+            "title": "Log in",
+            "description": "Enter your details to access your account"
+        },
+        "buttons": {
+            "submit": "Log in"
+        },
+        "fields": {
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter your email",
+                "required": "Email is required",
+                "invalid": "Invalid email address",
+                "min": "Email must be at least {min} characters long",
+                "max": "Email must be at most {max} characters long"
+            },
+            "password": {
+                "label": "Password",
+                "placeholder": "Enter your password",
+                "required": "Password is required",
+                "invalid": "Invalid password",
+                "min": "Password must be at least 6 characters long",
+                "max": "Password must be at most {max} characters long"
+            }
+        }
+    },
     "messages": {
         "success": {
-            "signup": "User registered successfully!"
+            "signup": "User registration completed successfully!",
+            "login": "Login successful!"
+        },
+        "errors": {
+            "unexpected": "Unexpected server error!"
         }
     }
 }
