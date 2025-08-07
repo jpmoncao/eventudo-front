@@ -28,18 +28,16 @@ export default function SignupPage() {
         const res = await api
             .post('signup/', userData)
             .then(function (response) {
-                toast.success('Usuário cadastrado com sucesso!', {
-                    description: t('messages.success.' + response.data.message)
-                })
+                toast.success(t('messages.success.' + response.data.message))
             })
             .catch(function (error) {
                 console.error(error)
                 switch (error.status) {
                     case 500:
-                        toast.error('Erro inesperado no servidor!')
+                        toast.error(t('messages.errors.unexpected'))
                         break;
                     default:
-                        toast.error('Erro ao cadastrar usuário!', { description: error.response.data.message })
+                        toast.error(error.response.data.message)
                         break;
                 }
             });
