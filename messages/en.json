@@ -5,7 +5,9 @@
         "header": {
             "home": "Home",
             "events": "Events",
-            "about": "About"
+            "about": "About",
+            "profile": "Profile",
+            "login": "Login"
         },
         "footer": {
             "allRightsReserved": "All rights reserved",

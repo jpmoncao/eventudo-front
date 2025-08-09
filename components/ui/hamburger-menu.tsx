@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { useParams } from "next/navigation"
-import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { useParams, usePathname } from "next/navigation"
+import { useTranslations } from "next-intl";
 import { Menu, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -57,8 +58,8 @@ const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item,
   }
 
   return (
-    <a
-      href={item.href}
+    <Link
+      href={item.href ?? ''}
       className={cn(
         "block py-2 text-lg font-medium transition-colors hover:text-primary",
         depth > 0 && "pl-4",
@@ -66,11 +67,12 @@ const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number }> = ({ item,
       )}
     >
       {item.title}
-    </a>
+    </Link>
   )
 }
 
 export default function HamburgerMenu(props: { menuItems: MenuItem[] }) {
+  const t = useTranslations('globals');
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -86,6 +88,9 @@ export default function HamburgerMenu(props: { menuItems: MenuItem[] }) {
           {props.menuItems.map((item) => (
             <MenuItemComponent key={item.title} item={item} />
           ))}
+          <Link href='/profile'>
+            <Button variant='secondary'>{t('header.profile')}</Button>
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>

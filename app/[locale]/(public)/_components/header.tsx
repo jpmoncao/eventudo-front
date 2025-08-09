@@ -5,6 +5,7 @@ import HamburgerMenu, { MenuItem } from "@/components/ui/hamburger-menu";
 import { LocaleButton } from "@/components/ui/locale-button";
 import { ThemeButton } from "@/components/ui/theme-button";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
     const t = useTranslations("globals");
@@ -12,7 +13,7 @@ export default function Header() {
     const menuItems: MenuItem[] = [
         { title: t('header.home'), href: "/" },
         { title: t('header.events'), href: "/events" },
-        { title: t('header.about'), href: "/about" },
+        { title: t('header.about'), href: "/about" }
     ]
 
     return (
@@ -31,10 +32,13 @@ export default function Header() {
                 <HamburgerMenu menuItems={menuItems} />
 
                 <nav className="hidden lg:flex">
-                    <ul className="flex space-x-4">
+                    <ul className="flex items-center space-x-4 lg:gap-8 lg:px-8">
                         {menuItems.map((item) => (
                             <Link key={item.title} href={item.href ?? '/'} className="hover:underline hover:text-foreground/60">{item.title}</Link>
                         ))}
+                        <Link href='/profile'>
+                            <Button variant='secondary'>{t('header.profile')}</Button>
+                        </Link>
                     </ul>
                 </nav>
             </div>
