@@ -3,6 +3,8 @@ import { CalendarClock, ChevronLeft, MapPinIcon, TicketCheck } from "lucide-reac
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { toast } from "sonner";
+import { api } from "@/lib/axios";
 
 // Components Imports
 import { Button } from "@/components/ui/button";
@@ -21,14 +23,29 @@ interface EventPageProps {
 }
 
 const fetchEvent = async (id: string): Promise<IEvent | null> => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASEURL}/events/${id}`, {
-        cache: "force-cache"
-    });
+    const t = await getTranslations();
+    
+    try {
+        const data = await api
+            .get(`/events/${id}`)
+            .then((response) => response.data.data)
+            .catch((error) => {
+                console.error(error);
 
-    if (!res.ok) return null;
+                switch (error.status) {
+                    case 500:
+                        toast.error(t('messages.errors.unexpected'))
+                        break;
+                    default:
+                        toast.error(error.response.data.message)
+                        break;
+                }
+            })
 
-    const json = await res.json();
-    return json.data as IEvent;
+        return data as IEvent;
+    } catch {
+        return null;
+    }
 };
 
 export default async function EventPage({ params }: EventPageProps) {

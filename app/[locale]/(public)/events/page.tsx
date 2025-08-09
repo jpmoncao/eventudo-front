@@ -2,6 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
+import { getTranslations } from "next-intl/server";
+import { api } from "@/lib/axios";
 
 // Components Imports
 import {
@@ -88,21 +91,56 @@ const EventCategory = ({
 }
 
 const fetchEvents = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_BASEURL + '/events');
+    const t = await getTranslations();
 
-    if (!res.ok) return null;
+    try {
+        const data = await api
+            .get('/events')
+            .then((response) => response.data.data)
+            .catch((error) => {
+                console.error(error);
 
-    const json = await res.json();
-    return json.data as IEvent[];
+                switch (error.status) {
+                    case 500:
+                        toast.error(t('messages.errors.unexpected'))
+                        break;
+                    default:
+                        toast.error(error.response.data.message)
+                        break;
+                }
+            })
+
+        return data as IEvent[];
+    } catch {
+        return [];
+    }
 };
 
+
 const fetchCategories = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_BASEURL + '/categories');
+    const t = await getTranslations();
 
-    if (!res.ok) return null;
+    try {
+        const data = await api
+            .get('/categories')
+            .then((response) => response.data.data)
+            .catch((error) => {
+                console.error(error);
 
-    const json = await res.json();
-    return json.data as ICategory[];
+                switch (error.status) {
+                    case 500:
+                        toast.error(t('messages.errors.unexpected'))
+                        break;
+                    default:
+                        toast.error(error.response.data.message)
+                        break;
+                }
+            })
+
+        return data as ICategory[];
+    } catch {
+        return [];
+    }
 };
 
 export default async function EventsPage() {
