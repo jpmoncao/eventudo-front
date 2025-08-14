@@ -1,7 +1,8 @@
 'use client'
 
 import z from 'zod'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { useForm, FormProvider, DefaultValues } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -30,7 +31,7 @@ const defaultValues: DefaultValues<LoginForm> = {
     password: ''
 }
 
-export default function LoginPage({ locale }: { locale: string }) {
+export default function LoginPage() {
     const t = useTranslations()
 
     const router = useRouter();
@@ -50,7 +51,7 @@ export default function LoginPage({ locale }: { locale: string }) {
                 toast.success(t('messages.success.' + message));
 
                 const callbackUrl = searchParams.get('callbackUrl');
-                const sucessUrl = `/${locale}/profile/${id}`;
+                const sucessUrl = `/profile/${id}`;
 
                 router.push(callbackUrl ?? sucessUrl)
             }).catch((error) => {
@@ -60,7 +61,9 @@ export default function LoginPage({ locale }: { locale: string }) {
                         toast.error(t('messages.errors.unexpected'))
                         break;
                     default:
-                        toast.error(error.response.data.message)
+                        const literalCodeError = 'messages.errors.' + error.response.data.message;
+                        const translateError = t(literalCodeError);
+                        toast.error(translateError != literalCodeError ? translateError : error.response.data.message)
                         break;
                 }
             })
