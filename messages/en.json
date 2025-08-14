@@ -217,11 +217,30 @@
     },
     "messages": {
         "success": {
-            "signup": "User registration completed successfully!",
-            "login": "Login successful!"
+            "signup": "User registered successfully!",
+            "login": "Login successful!",
+            "logout": "Logout successful!",
+            "findAllCategories": "Categories listed successfully!",
+            "findCategory": "Category listed successfully!",
+            "findAllEvents": "Events listed successfully!",
+            "findEvent": "Event listed successfully!",
+            "createdEvent": "Event created successfully!",
+            "createdUser": "User created successfully!",
+            "deletedUser": "User deleted successfully!",
+            "updatedUser": "User updated successfully!",
+            "findAllUsers": "Users listed successfully!",
+            "findUser": "User listed successfully!"
         },
         "errors": {
-            "unexpected": "Unexpected server error!"
+            "unexpected": "Unexpected server error!",
+            "invalidId": "The provided ID is invalid",
+            "missingParameters": "Missing parameters",
+            "emailNotFound": "Email not found!",
+            "passwordMatching": "Password does not match!",
+            "emailAlreadyExists": "This email is already registered!",
+            "cpfAlreadyExists": "This CPF is already registered!",
+            "phoneAlreadyExists": "This phone number is already registered!",
+            "userDoesNotExist": "User does not exist!"
         }
     }
 }

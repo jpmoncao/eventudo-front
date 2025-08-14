@@ -217,11 +217,30 @@
     },
     "messages": {
         "success": {
-            "signup": "Cadastro do usuário efetuado com sucesso!",
-            "login": "Login efetuado com sucesso!"
+            "signup": "Cadastro do usuário realizado com sucesso!",
+            "login": "Login realizado com sucesso!",
+            "logout": "Logout realizado com sucesso!",
+            "findAllCategories": "Categorias listadas com sucesso!",
+            "findCategory": "Categoria listada com sucesso!",
+            "findAllEvents": "Eventos listados com sucesso!",
+            "findEvent": "Evento listado com sucesso!",
+            "createdEvent": "Evento criado com sucesso!",
+            "createdUser": "Usuário criado com sucesso!",
+            "deletedUser": "Usuário excluído com sucesso!",
+            "updatedUser": "Usuário atualizado com sucesso!",
+            "findAllUsers": "Usuários listados com sucesso!",
+            "findUser": "Usuário listado com sucesso!"
         },
         "errors": {
-            "unexpected": "Erro inesperado no servidor!"
+            "unexpected": "Erro inesperado no servidor!",
+            "invalidId": "ID informado é inválido",
+            "missingParameters": "Faltam parâmetros",
+            "emailNotFound": "Email não encontrado!",
+            "passwordMatching": "A senha não corresponde!",
+            "emailAlreadyExists": "Este email já foi cadastrado!",
+            "cpfAlreadyExists": "Este CPF já foi cadastrado!",
+            "phoneAlreadyExists": "Este telefone já foi cadastrado!",
+            "userDoesNotExist": "Usuário não existe!"
         }
     }
 }
