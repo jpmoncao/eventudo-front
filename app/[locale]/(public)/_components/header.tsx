@@ -1,4 +1,6 @@
+import { use } from "react";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { useTranslations } from "next-intl";
 
 import HamburgerMenu, { MenuItem } from "@/components/ui/hamburger-menu";
@@ -15,6 +17,8 @@ export default function Header() {
         { title: t('header.events'), href: "/events" },
         { title: t('header.about'), href: "/about" }
     ]
+
+    const cookieStore = use(cookies());
 
     return (
         <header className="flex items-center justify-between p-4 bg-background text-foreground h-20">
@@ -36,7 +40,10 @@ export default function Header() {
                         {menuItems.map((item) => (
                             <Link key={item.title} href={item.href ?? '/'} className="hover:underline hover:text-foreground/60">{item.title}</Link>
                         ))}
-                        <Link href='/profile'>
+                        <Link href='/login' className={cookieStore.has('Authorization') ? 'hidden' : ''}>
+                            <Button variant='secondary'>{t('header.login')}</Button>
+                        </Link>
+                        <Link href='/profile' className={!cookieStore.has('Authorization') ? 'hidden' : ''}>
                             <Button variant='secondary'>{t('header.profile')}</Button>
                         </Link>
                     </ul>
