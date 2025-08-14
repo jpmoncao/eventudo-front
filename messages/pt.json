@@ -213,6 +213,9 @@
                     "max": "A senha deve conter no máximo {max} caracteres"
                 }
             }
+        },
+        "profile": {
+            "title": "Meu perfil"
         }
     },
     "messages": {
