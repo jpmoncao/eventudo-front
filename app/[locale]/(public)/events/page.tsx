@@ -48,7 +48,7 @@ const EventCategory = ({
 
             <Separator className="my-4 w-full" />
 
-            <div className="w-full">
+            <div className="w-full min-h-48">
                 <Carousel
                     opts={{
                         align: "start",
@@ -56,7 +56,7 @@ const EventCategory = ({
                     className="w-full max-w-sm sm:max-w-full flex items-center justify-center gap-2 mx-auto"
                 >
                     <CarouselPrevious className="flex relative left-0 top-0 translate-0" />
-                    <CarouselContent className="w-full flex gap-2">
+                    <CarouselContent className="w-full min-h-full flex gap-2">
                         {categoryEvents.map((event) => (
                             <CarouselItem
                                 key={event.id}
@@ -68,9 +68,9 @@ const EventCategory = ({
                                     className="p-1 block h-full"
                                 >
                                     <CardCarousel.Root
-                                        imageURL={(event.images && event.images[0]?.url) ? event.images[0].url : 'https://placehold.co/1024x768?text=No+Image'}
+                                        imageURL={(event.images && event.images[0]?.url) ? event.images[0].url : 'https://picsum.photos/1024/768?blur'}
                                         imageAlt={event.name}
-                                        className="w-full h-full"
+                                        className="w-full h-full bg-foreground/20"
                                     >
                                         <CardCarousel.Text
                                             title={event.name}

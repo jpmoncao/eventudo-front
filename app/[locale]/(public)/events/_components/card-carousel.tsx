@@ -2,10 +2,12 @@ import { cn } from "@/lib/utils";
 
 const CardText = ({ title, description, className }: { title: string, description: string, className?: string }) => (
     <div className={cn("absolute bottom-0 left-0 p-4 w-full", className)}>
-        <h3 className="text-2xl font-bold text-neutral-100 tracking-tighter">
+        <h3 className="text-lg sm:text-2xl font-bold text-neutral-100 tracking-tighter line-clamp-2">
             {title}
         </h3>
-        <p className="w-[90%] truncate text-sm text-neutral-300">
+
+
+        <p className="w-[90%] truncate text-xs sm:text-sm text-neutral-300">
             {description}
         </p>
     </div>
