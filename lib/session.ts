@@ -1,5 +1,5 @@
 import 'server-only'
-import { SignJWT, jwtVerify } from 'jose'
+import { jwtVerify } from 'jose'
 
 const secretKey = process.env.NEXT_PUBLIC_API_SECRET
 
