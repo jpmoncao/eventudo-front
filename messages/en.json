@@ -182,7 +182,8 @@
             "buttons": {
                 "back": "Back",
                 "next": "Next",
-                "submit": "Submit"
+                "submit": "Submit",
+                "loginMessage": "Já cadastrou sua conta? Faça o login aqui!"
             }
         }
     },
@@ -192,7 +193,8 @@
             "description": "Enter your details to access your account"
         },
         "buttons": {
-            "submit": "Log in"
+            "submit": "Log in",
+            "signupMessage": "Não possui uma conta? Cadastra-se aqui"
         },
         "fields": {
             "email": {
