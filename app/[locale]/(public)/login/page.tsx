@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
 import { Button } from '@/components/ui/button'
 import { api } from '@/lib/axios'
+import Link from 'next/link'
 
 const loginSchema = z.object({
     email: z.string().email('pages.login.fields.email.invalid'),
@@ -67,7 +68,7 @@ export default function LoginPage({ locale }: { locale: string }) {
 
     return (
         <section>
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-[600px] mx-auto">
                 <Card className="shadow-sm">
                     <CardHeader>
                         <CardTitle className="text-lg">{t('pages.login.header.title')}</CardTitle>
@@ -78,7 +79,7 @@ export default function LoginPage({ locale }: { locale: string }) {
 
                     <CardContent>
                         <FormProvider {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-4 max-w-[500px] mx-auto">
+                            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-4 max-w-[400px] mx-auto">
                                 <FormField
                                     control={form.control}
                                     name="email"
@@ -123,6 +124,7 @@ export default function LoginPage({ locale }: { locale: string }) {
                                     <Button type='submit' className='w-1/4'>{t('pages.login.buttons.submit')}</Button>
                                 </div>
 
+                                <Link href='/signup' className='text-sm text-center text-muted-foreground underline mb-4 transition-all hover:text-foreground/80'>{t('pages.login.buttons.signupMessage')}</Link>
                             </form>
                         </FormProvider>
                     </CardContent>

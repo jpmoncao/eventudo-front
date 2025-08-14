@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Separator } from '@/components/ui/separator'
 
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 export const MultiStepFormContext = createContext<MultiStepFormContextProps | null>(null)
 
@@ -172,9 +173,12 @@ const MultiStepForm = ({ steps, defaultValues, onComplete }: IMultiStepForm) => 
 
                                 {currentStep.component}
 
-                                <div className="flex justify-between mt-4">
-                                    <PrevButton text={t('buttons.back')} />
-                                    <NextButton text={currentStepIndex === steps.length - 1 ? t('buttons.submit') : t('buttons.next')} />
+                                <div className="flex mt-4 flex-wrap gap-y-4">
+                                    <div className="flex justify-between w-full">
+                                        <PrevButton text={t('buttons.back')} />
+                                        <NextButton text={currentStepIndex === steps.length - 1 ? t('buttons.submit') : t('buttons.next')} />
+                                    </div>
+                                    <Link href='/login' className='text-sm text-center text-muted-foreground mb-4 underline transition-all hover:text-foreground/80'>{t('buttons.loginMessage')}</Link>
                                 </div>
                             </form>
                         </FormProvider>
