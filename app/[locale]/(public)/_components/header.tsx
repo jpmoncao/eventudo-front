@@ -1,7 +1,8 @@
 import { use } from "react";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { useTranslations } from "next-intl";
+
+import { getSession } from "@/lib/auth";
 
 import HamburgerMenu, { MenuItem } from "@/components/ui/hamburger-menu";
 import { LocaleButton } from "@/components/ui/locale-button";
@@ -18,7 +19,7 @@ export default function Header() {
         { title: t('header.about'), href: "/about" }
     ]
 
-    const cookieStore = use(cookies());
+    const session = use(getSession());
 
     return (
         <header className="flex items-center justify-between p-4 bg-background text-foreground h-20">
@@ -40,10 +41,10 @@ export default function Header() {
                         {menuItems.map((item) => (
                             <Link key={item.title} href={item.href ?? '/'} className="hover:underline hover:text-foreground/60">{item.title}</Link>
                         ))}
-                        <Link href='/login' className={cookieStore.has('Authorization') ? 'hidden' : ''}>
+                        <Link href='/login' className={session ? 'hidden' : ''}>
                             <Button variant='secondary'>{t('header.login')}</Button>
                         </Link>
-                        <Link href='/profile' className={!cookieStore.has('Authorization') ? 'hidden' : ''}>
+                        <Link href='/profile' className={!session ? 'hidden' : ''}>
                             <Button variant='secondary'>{t('header.profile')}</Button>
                         </Link>
                     </ul>

@@ -1,17 +1,11 @@
-import { decrypt } from "@/lib/session";
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { getSession } from "@/lib/auth";
 
 export async function GET(req: NextRequest) {
-    const cookieStore = await cookies();
-    const authorization = cookieStore.get('Authorization')?.value;
-
-    const session = authorization ? await decrypt(authorization) : null;
+    const session = await getSession();
 
     if (!session)
-        return NextResponse.redirect(new URL('/', req.url))
+        return NextResponse.redirect(new URL('/', req.url));
 
-    const userId = (session as { id: string }).id
-
-    return NextResponse.redirect(new URL('/profile/' + userId, req.url))
+    return NextResponse.redirect(new URL('/profile/' + session.id, req.url));
 }
