@@ -6,7 +6,7 @@ import { decrypt } from '@/lib/session';
 const protectedRoutes = ['/profile', '/checkout', '/logout'];
 const publicRoutes = ['/login', '/signup'];
 
-// Primeiro, cria o middleware base do next-intl
+// Cria o middleware base do next-intl
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(req: NextRequest) {
@@ -27,8 +27,10 @@ export async function middleware(req: NextRequest) {
   const session = sessionCookie ? await decrypt(sessionCookie) : null;
 
   if (isProtected && !session) {
+    // Remove o locale do pathname para construir o callbackUrl
+    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
     const loginUrl = new URL(`/${locale}/login`, req.url);
-    loginUrl.searchParams.set('callbackUrl', `${pathname}${search}`);
+    loginUrl.searchParams.set('callbackUrl', `${pathWithoutLocale}${search}`);
     return NextResponse.redirect(loginUrl);
   }
 
@@ -36,7 +38,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}`, req.url));
   }
 
-  return res; // Continua fluxo normal do next-intl
+  return res;
 }
 
 export const config = {
