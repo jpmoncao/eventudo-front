@@ -3,7 +3,7 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 import { decrypt } from '@/lib/session';
 
-const protectedRoutes = ['/profile', '/checkout'];
+const protectedRoutes = ['/profile', '/checkout', '/logout'];
 const publicRoutes = ['/login', '/signup'];
 
 // Primeiro, cria o middleware base do next-intl
