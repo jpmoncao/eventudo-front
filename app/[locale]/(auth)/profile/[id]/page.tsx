@@ -1,6 +1,6 @@
 // Libraries Imports
-import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { Link, redirect } from "@/i18n/navigation";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Calendar1, LogOut } from "lucide-react";
 import { toast } from "sonner";
 
@@ -10,13 +10,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 // Lib Imports
 import { api } from "@/lib/axios";
+import { getSession } from "@/lib/auth";
 
 // Interface Imports
 import { IUser } from "@/interfaces/user";
 
 const fetchUser = async (id: string): Promise<IUser | null> => {
     const t = await getTranslations();
-    
+
     try {
         const data = await api
             .get(`/users/${id}`)
@@ -41,9 +42,17 @@ const fetchUser = async (id: string): Promise<IUser | null> => {
 };
 
 export default async function ProfileIdPage({ params }: { params: { id: string } }) {
+    const locale = await getLocale();
     const t = await getTranslations('pages.profile');
 
+    const session = await getSession();
+    const sessionId = session?.id;
+
     const userId = await params.id;
+
+    if (userId !== sessionId)
+        redirect({ href: '/profile', locale});
+
     const userData = await fetchUser(userId);
 
     const items1 = [
