@@ -215,6 +215,13 @@
             }
         }
     },
+    "profile": {
+        "title": "My profile",
+        "list": {
+            "yourEvents": "Your Events",
+            "logout": "Logout"
+        }
+    },
     "messages": {
         "success": {
             "signup": "User registered successfully!",

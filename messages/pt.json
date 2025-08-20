@@ -215,7 +215,11 @@
             }
         },
         "profile": {
-            "title": "Meu perfil"
+            "title": "Meu perfil",
+            "list": {
+                "yourEvents": "Seus Eventos",
+                "logout": "Logout"
+            }
         }
     },
     "messages": {
