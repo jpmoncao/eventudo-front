@@ -48,7 +48,9 @@ npm run dev
 
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-###
+#
+
+<img src="./.github/preview/home.png" height="600" alt="vscode logo"  />
 
 <h1 align="left"></h1>
 
